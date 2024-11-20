@@ -1,0 +1,66 @@
+﻿@model CourierTrackingAndDeliverySystem.Models.Package
+
+@{
+    ViewData["Title"] = "Create New Package";
+}
+
+<h2>Create New Package</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="TrackingNumber" class="control-label"></label>
+        <input asp-for="TrackingNumber" class="form-control" />
+        <span asp-validation-for="TrackingNumber" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="SenderName" class="control-label"></label>
+        <input asp-for="SenderName" class="form-control" />
+        <span asp-validation-for="SenderName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReceiverName" class="control-label"></label>
+        <input asp-for="ReceiverName" class="form-control" />
+        <span asp-validation-for="ReceiverName" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="ReceiverAddress" class="control-label"></label>
+        <textarea asp-for="ReceiverAddress" class="form-control"></textarea>
+        <span asp-validation-for="ReceiverAddress" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="CurrentStatus" class="control-label"></label>
+        <select asp-for="CurrentStatus" class="form-control">
+            <option value="Awaiting Pickup">Awaiting Pickup</option>
+            <option value="In Transit">In Transit</option>
+            <option value="Out for Delivery">Out for Delivery</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Delayed">Delayed</option>
+        </select>
+        <span asp-validation-for="CurrentStatus" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="EstimatedDeliveryDate" class="control-label"></label>
+        <input asp-for="EstimatedDeliveryDate" type="date" class="form-control" />
+        <span asp-validation-for="EstimatedDeliveryDate" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="AssignedTo" class="control-label"></label>
+        <select asp-for="AssignedTo" class="form-control">
+            <option value="">-- Select Delivery Personnel --</option>
+            @foreach (var user in ViewBag.Users as List<CourierTrackingAndDeliverySystem.Models.User>)
+            {
+                <option value="@user.UserId">@user.Username</option>
+            }
+        </select>
+        <span asp-validation-for="AssignedTo" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create Package</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>

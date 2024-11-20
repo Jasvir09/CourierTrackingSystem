@@ -1,0 +1,22 @@
+﻿@{
+    ViewData["Title"] = "Track Package";
+}
+
+<div class="container">
+    <div class="track-box">
+        <h2>Track Your Courier</h2>
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger">@ViewBag.Error</div>
+        }
+
+        <form asp-controller="Package" asp-action="Track" method="post">
+            <div class="form-group">
+                <label for="trackingNumber">Enter Tracking Number:</label>
+                <input type="text" class="form-control" id="trackingNumber" name="trackingNumber" placeholder="Tracking Number" required />
+            </div>
+            <button type="submit" class="btn btn-primary">Track Package</button>
+        </form>
+    </div>
+</div>

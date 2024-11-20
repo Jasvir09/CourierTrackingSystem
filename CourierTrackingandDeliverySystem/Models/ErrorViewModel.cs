@@ -1,4 +1,4 @@
-namespace CourierTrackingandDeliverySystem.Models
+namespace CourierTrackingAndDeliverySystem.Models
 {
     public class ErrorViewModel
     {

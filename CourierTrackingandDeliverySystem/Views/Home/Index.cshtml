@@ -1,8 +1,27 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Package Delivery Statistics";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container">
+    <div class="stats-box">
+        <h2>Package Delivery Stat</h2>
+
+        <div class="stats-grid">
+            <div class="stats-card">
+                <h3>Total Delivered</h3>
+                <p class="stats-number">@Model.TotalDelivered</p>
+            </div>
+            <div class="stats-card">
+                <h3>Total In Transit</h3>
+                <p class="stats-number">@Model.TotalInTransit</p>
+            </div>
+            <div class="stats-card">
+                <h3>Total Pending</h3>
+                <p class="stats-number">@Model.TotalPending</p>
+            </div>
+        </div>
+    </div>
 </div>
+

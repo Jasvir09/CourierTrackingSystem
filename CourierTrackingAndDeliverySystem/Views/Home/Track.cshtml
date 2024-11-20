@@ -1,0 +1,97 @@
+﻿@model Package
+
+@{
+    ViewData["Title"] = "Track Package";
+}
+
+<div class="container">
+    <div class="tracking-box">
+        <h2>Track Your Package</h2>
+
+        <form asp-controller="Package" asp-action="Track" method="get">
+            <div class="form-group">
+                <label for="trackingNumber">Tracking Number</label>
+                <input type="text" class="form-control" id="trackingNumber" name="trackingNumber" placeholder="Enter tracking number" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Track</button>
+            </div>
+        </form>
+
+        @if (Model != null)
+        {
+            <div class="package-details">
+                <h3>Package Details</h3>
+                <p><strong>Tracking Number:</strong> @Model.TrackingNumber</p>
+                <p><strong>Current Status:</strong> @Model.CurrentStatus</p>
+
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Add styling -->
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f8f9fa;
+        padding: 20px;
+    }
+
+    .tracking-box {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .tracking-box h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #343a40;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+
+    .btn-primary {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .package-details {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #e9ecef;
+        border-radius: 5px;
+    }
+
+    .package-details p {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+</style>
